@@ -5,7 +5,7 @@ export const fetchOrders = async ({ input }: { input: { page: number; limit: num
   try {
     return await getAllOrders(input.page, input.limit);
   } catch (error) {
-    console.log("❌ Error fetching orders:", error);
+    console.log("Error fetching orders:", error);
     throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Error fetching orders' });
   }
 };
@@ -19,9 +19,6 @@ export const addOrder = async ({ input }: {
   } 
 }) => {
   try {
-    // ✅ Log input to debug what Postman is sending
-    console.log("🔍 Received input:", input);
-
     return await createOrder(
       input.customerName,
       input.customerAddress,
@@ -29,7 +26,7 @@ export const addOrder = async ({ input }: {
       input.orderLineItems
     );
   } catch (error) {
-    console.error("❌ Error creating order:", error);
+    console.error("Error creating order:", error);
     throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Error creating order' });
   }
 };

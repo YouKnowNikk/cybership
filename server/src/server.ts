@@ -31,17 +31,17 @@ const startServer = async () => {
     console.log('✅ Database connected.');
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`Server running on http://localhost:${PORT}`);
     });
 
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error(' Failed to start server:', error);
     process.exit(1);
   }
 };
 
 process.on('SIGINT', async () => {
-  console.log('🛑 Shutting down server...');
+  console.log(' Shutting down server...');
   await disconnectDatabase();
   process.exit(0);
 });
